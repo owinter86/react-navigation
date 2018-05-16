@@ -281,6 +281,10 @@ export default function createNavigationContainer(Component) {
           'Uncaught exception while starting app from persisted navigation state! Trying to render again with a fresh navigation state..'
         );
         this.dispatch(NavigationActions.init());
+      } else {
+        // Throw error if not caught in above conditional
+        // Will ensure errors cascade to any custom errorBoundaries
+        throw new Error(e);
       }
     }
 
