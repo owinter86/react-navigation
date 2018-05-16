@@ -282,6 +282,8 @@ export default function createNavigationContainer(Component) {
         );
         this.dispatch(NavigationActions.init());
       }
+      // Cascade error to app errorboundary
+      throw new Error(e);
     }
 
     _persistNavigationState = async nav => {
